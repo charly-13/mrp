@@ -218,7 +218,7 @@
                                      <?php if(!empty($_SESSION['permisos'][15]['r'])){ ?>
                                     <li class="nav-item">
                                         <a href="layouts-horizontal.html" target="_blank" class="nav-link" data-key="t-horizontal">Calendario de producción</a>
-                                    </li>
+                                    </li> 
                                      <?php } ?>
                                        <?php if(!empty($_SESSION['permisos'][16]['r'])){ ?>
                                     <li class="nav-item">
@@ -228,6 +228,16 @@
                                         <?php if(!empty($_SESSION['permisos'][17]['r'])){ ?>
                                         <li class="nav-item">
                                         <a href="layouts-detached.html" target="_blank" class="nav-link" data-key="t-detached">Transferencias</a>
+                                    </li>
+                                     <?php } ?>
+                                        <?php if(!empty($_SESSION['permisos'][18]['r'])){ ?>
+                                        <li class="nav-item">
+                                        <a href="<?= base_url(); ?>/cap_lineasdtrabajo"  class="nav-link" data-key="t-detached">Líneas de trabajo</a>
+                                    </li>
+                                     <?php } ?>
+                                         <?php if(!empty($_SESSION['permisos'][19]['r'])){ ?>
+                                        <li class="nav-item">
+                                        <a href="<?= base_url(); ?>/cap_estaciones" target="_blank" class="nav-link" data-key="t-detached">Estaciones</a>
                                     </li>
                                      <?php } ?>
                                 </ul>
