@@ -1,7 +1,5 @@
 <?php headerAdmin($data);
-
 ?>
-
 <div id="contentAjax"></div>
 <div class="main-content">
 
