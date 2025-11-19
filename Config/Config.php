@@ -86,6 +86,9 @@
 	const MCREQUERIMIENTOS = 16;
 	const MCTRANSFERENCIAS = 17;
 
+	const MCLINEAS = 18;
+	const MCESTACIONESTRABAJO = 19;
+
 
 	const PERROR = 9;
 
