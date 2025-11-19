@@ -50,12 +50,12 @@
 			}
 			die();
 		} 
-
+ 
 		public function resetPass(){
 			if($_POST){
 
 			// 	dep($_POST);
-			// exit;
+			// exit; 
 			error_reporting(0);
 			$correos_copias = "carloscc_1997@outlook.com";
 

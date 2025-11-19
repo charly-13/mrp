@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			e.preventDefault();
 
 			let strEmail = document.querySelector('#txtEmail').value;
-			let strPassword = document.querySelector('#txtPassword').value;
+			let strPassword = document.querySelector('#txtPassword').value; 
 
 			if(strEmail == "" || strPassword == "")
 			{

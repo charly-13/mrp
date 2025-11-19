@@ -58,7 +58,7 @@
 		public function setTokenUser(int $idusuario, string $token){
 			$this->intIdUsuario = $idusuario;
 			$this->strToken = $token;
-			$sql = "UPDATE persona SET token = ? WHERE idusuario = $this->intIdUsuario ";
+			$sql = "UPDATE usuarios SET token = ? WHERE idusuario = $this->intIdUsuario ";
 			$arrData = array($this->strToken);
 			$request = $this->update($sql,$arrData);
 			return $request;
@@ -78,7 +78,7 @@
 		public function insertPassword(int $idusuario, string $password){
 			$this->intIdUsuario = $idusuario;
 			$this->strPassword = $password;
-			$sql = "UPDATE persona SET password = ?, token = ? WHERE idusuario = $this->intIdUsuario ";
+			$sql = "UPDATE usuarios SET password = ?, token = ? WHERE idusuario = $this->intIdUsuario ";
 			$arrData = array($this->strPassword,"");
 			$request = $this->update($sql,$arrData);
 			return $request;
