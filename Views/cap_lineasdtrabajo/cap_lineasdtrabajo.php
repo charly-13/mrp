@@ -285,7 +285,7 @@
     </div>
     <!-- End Page-content -->
 
-
+ 
 
     <footer class="footer">
         <div class="container-fluid">
@@ -302,5 +302,6 @@
         </div>
     </footer>
 </div>
+
 <!-- end main content-->
 <?php footerAdmin($data); ?>
