@@ -7,6 +7,7 @@ class Cap_plantasModel extends Mysql
     public $strNombre;
     public $strFecha;
     public $intEstatus;
+    public $strDireccion;
 
 
     public function __construct()
@@ -38,13 +39,14 @@ class Cap_plantasModel extends Mysql
 
     }
 
-    public function inserPlanta($claveUnica, $nombre_planta, $fecha_creacion, $intEstatus)
+    public function inserPlanta($claveUnica, $nombre_planta, $fecha_creacion, $direccion, $intEstatus)
     {
 
         $return = 0;
         $this->strClave = $claveUnica;
         $this->strNombre = $nombre_planta;
         $this->strFecha = $fecha_creacion;
+        $this->strDireccion = $direccion;
         $this-> intEstatus = $intEstatus;
 
 
@@ -52,11 +54,12 @@ class Cap_plantasModel extends Mysql
         $request = $this->select_all($sql);
 
         if (empty($request)) {
-            $query_insert = "INSERT INTO mrp_planta(cve_planta,nombre_planta,fecha_creacion,estado) VALUES(?,?,?,?)";
+            $query_insert = "INSERT INTO mrp_planta(cve_planta,nombre_planta,fecha_creacion,direccion,estado) VALUES(?,?,?,?,?)";
             $arrData = array(
                 $this->strClave,
                 $this->strNombre,
                 $this->strFecha,
+                $this->strDireccion,
                 $this->intEstatus
             );
             $request_insert = $this->insert($query_insert, $arrData);
@@ -73,6 +76,14 @@ class Cap_plantasModel extends Mysql
 		{
 			$sql = "SELECT * FROM  mrp_planta 
 					WHERE estado != 0 ";
+			$request = $this->select_all($sql);
+			return $request;
+		}
+
+        		public function selectOptionPlantas()
+		{
+			$sql = "SELECT * FROM  mrp_planta 
+					WHERE estado = 2";
 			$request = $this->select_all($sql);
 			return $request;
 		}
@@ -95,25 +106,28 @@ class Cap_plantasModel extends Mysql
 		}
 
         
-		public function updatePlanta($idplanta, $nombre_planta, $estado){
-			$this->intIdplanta = $idplanta;
-	        $this->strNombre = $nombre_planta;
-            $this-> intEstatus = $estado;
+		public function updatePlanta($idplanta, $nombre_planta, $direccion, $estado){
+        $this->intIdplanta = $idplanta;
+        $this->strNombre = $nombre_planta;
+        $this->strDireccion = $direccion;
+        $this->intEstatus = $estado;
 
-			$sql = "SELECT * FROM mrp_planta WHERE nombre_planta = '{$this->strNombre}'";
-			$request = $this->select_all($sql);
+        $sql = "SELECT * FROM mrp_planta WHERE nombre_planta = '{$this->strNombre}' AND idplanta != {$this->intIdplanta}";
+        $request = $this->select_all($sql);
 
-			if(empty($request))
-			{
-				$sql = "UPDATE mrp_planta SET nombre_planta = ?, estado = ? WHERE idplanta = $this->intIdplanta ";
-				$arrData = array($this->strNombre, 
-								 $this-> intEstatus);
-				$request = $this->update($sql,$arrData);
-			}else{
-				$request = "exist";
-			}
-		    return $request;			
-		}
+        if (empty($request)) {
+            $sql = "UPDATE mrp_planta SET nombre_planta = ?, direccion = ?, estado = ?  WHERE idplanta = $this->intIdplanta ";
+            $arrData = array(
+                $this->strNombre,
+                $this->strDireccion,
+                $this->intEstatus
+            );
+            $request = $this->update($sql, $arrData);
+        } else {
+            $request = "exist";
+        }
+        return $request;
+    }
 
 
 

@@ -6,6 +6,7 @@ let divLoading = document.querySelector("#divLoading");
 const planta = document.querySelector('#idplanta');
 const nombre = document.querySelector('#nombre-planta-input');
 const estado = document.querySelector('#estado-select');
+const direccion = document.querySelector('#direccion-linea-textarea');
 
 // Mis referencias globales
 let primerTab;   // Tab LISTA
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Limpiar formulario
         formPlantas.reset();
         planta.value = '';
-        estado.value = '1';
+        estado.value = '2';
     });
 
     // --------------------------------------------------------------------
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         tabNuevo.textContent = 'NUEVO';
         spanBtnText.textContent = 'REGISTRAR';
         planta.value = '';
-        estado.value = '1';
+        estado.value = '2';
         formPlantas.reset();
     });
 
@@ -128,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             // Seguir en modo NUEVO
                             formPlantas.reset();
                             planta.value = '';
-                            estado.value = '1';
+                            estado.value = '2';
                             tabNuevo.textContent = 'NUEVO';
                             spanBtnText.textContent = 'REGISTRAR';
                             tablePlantas.api().ajax.reload();
@@ -137,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             // Regresar al listado
                             formPlantas.reset();
                             planta.value = '';
-                            estado.value = '1';
+                            estado.value = '2';
                             tabNuevo.textContent = 'NUEVO';
                             spanBtnText.textContent = 'REGISTRAR';
                             primerTab.show();
@@ -158,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Acción final después de OK (opcional)
                         formPlantas.reset();
                         planta.value = '';
-                        estado.value = '1';
+                        estado.value = '2';
                         tabNuevo.textContent = 'NUEVO';
                         spanBtnText.textContent = 'REGISTRAR';
                         primerTab.show();
@@ -200,6 +201,7 @@ function fntEditInfo(idplanta) {
                 planta.value = objData.data.idplanta;
                 nombre.value = objData.data.nombre_planta;
                 estado.value = objData.data.estado;
+                 direccion.value = objData.data.direccion;
 
                 // Cambiar al tab de captura
                 if (firstTab) firstTab.show();
@@ -274,7 +276,7 @@ function fntDelInfo(idplanta) {
 
     });
 
-}
+} 
 
 // ------------------------------------------------------------------------
 //  VER EL DETALLE DE LA PLANTA
@@ -297,6 +299,7 @@ function fntViewPlanta(idplanta) {
                 document.querySelector("#celNombre").innerHTML = objData.data.nombre_planta;
                 document.querySelector("#celFecha").innerHTML = objData.data.fecha_creacion;
                 document.querySelector("#celEstado").innerHTML = estadoUsuario;
+                document.querySelector("#celDireccion").innerHTML = objData.data.direccion;
 
                 $('#modalViewPlanta').modal('show');
             } else {

@@ -38,8 +38,8 @@ class Cap_plantas extends Controllers
 
                 $intIdplanta = intval($_POST['idplanta']);
                 $nombre_planta = strClean($_POST['nombre-planta-input']);
-                $estado = intval($_POST['estado-select']);
-
+                $estado = intval($_POST['estado-select']); 
+                 $direccion = strClean($_POST['direccion-linea-textarea']);
 
                 if ($intIdplanta == 0) {
 
@@ -48,14 +48,14 @@ class Cap_plantas extends Controllers
 
                     //Crear 
                     if ($_SESSION['permisosMod']['w']) {
-                        $request_planta = $this->model->inserPlanta($claveUnica, $nombre_planta, $fecha_creacion, $estado);
+                        $request_planta = $this->model->inserPlanta($claveUnica, $nombre_planta, $fecha_creacion, $direccion, $estado);
                         $option = 1;
                     }
 
                 } else {
                     //Actualizar
                     if ($_SESSION['permisosMod']['u']) {
-                        $request_planta = $this->model->updatePlanta($intIdplanta, $nombre_planta, $estado);
+                        $request_planta = $this->model->updatePlanta($intIdplanta, $nombre_planta, $direccion, $estado);
                         $option = 2;
                     }
                 }
@@ -76,8 +76,8 @@ class Cap_plantas extends Controllers
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
             }
         }
-    }
-
+    } 
+ 
     public function getPlantas()
     {
         if ($_SESSION['permisosMod']['r']) {
@@ -87,9 +87,9 @@ class Cap_plantas extends Controllers
                 $btnEdit = '';
                 $btnDelete = '';
 
-                if ($arrData[$i]['estado'] == 1) {
+                if ($arrData[$i]['estado'] == 2) {
                     $arrData[$i]['estado'] = '<span class="badge bg-success">Activo</span>';
-                } else {
+                } else if($arrData[$i]['estado'] == 1) {
                     $arrData[$i]['estado'] = '<span class="badge bg-danger">Inactivo</span>';
                 }
 
@@ -151,7 +151,19 @@ class Cap_plantas extends Controllers
     }
 
 
-
+    		public function getSelectPlantas(){
+		$htmlOptions = '<option value="" selected>--Seleccione--</option>';
+			$arrData = $this->model->selectOptionPlantas();
+			if(count($arrData) > 0 ){
+				for ($i=0; $i < count($arrData); $i++) { 
+					if($arrData[$i]['estado'] == 2 ){
+					$htmlOptions .= '<option value="'.$arrData[$i]['idplanta'].'">'.$arrData[$i]['cve_planta']. ''.$arrData[$i]['nombre_planta'].'</option>';
+					}
+				}
+			}
+			echo $htmlOptions;
+			die();	
+		}
 
 
 }

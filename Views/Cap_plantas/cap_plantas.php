@@ -86,7 +86,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PROCESO -->
+                                    <!-- ESTADO -->
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                                   <label class="form-label" for="estado-select">ESTADO</label>
@@ -94,7 +94,7 @@
                                                 <span class="input-group-text" id="estado-addon">Est</span>
                                                 <select class="form-select" id="estado-select" name="estado-select"
                                                     aria-describedby="estado-addon" required >
-                                                    <option value="1" selected>Activo</option>
+                                                    <option value="2" selected>Activo</option>
                                                     <option value="1">Inactivo</option>
                                                 </select>
                                                 <div class="invalid-feedback">El campo estado es obligatorio</div>
@@ -104,7 +104,15 @@
                                 </div>
                                 <!-- end row -->
 
-
+                                    <div class="mb-3">
+                                    <label class="form-label" for="direccion-linea-textarea">Dirección</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="direccion-linea-addon">dir</span>
+                                        <textarea class="form-control" id="direccion-linea-textarea" name="direccion-linea-textarea"
+                                            placeholder="Ingresa la dirección" rows="3" required
+                                            aria-describedby="direccion-linea-addon"></textarea>
+                                    </div>
+                                </div>
 
                                 <div class="d-flex align-items-start gap-3 mt-4">
                                     <button type="submit" id="btnActionForm"
@@ -178,6 +186,10 @@
             <tr>
               <td>Estado:</td>
               <td id="celEstado">Larry</td>
+            </tr>
+                        <tr>
+              <td>Dirección:</td>
+              <td id="celDireccion">Larry</td>
             </tr>
           </tbody>
         </table>
