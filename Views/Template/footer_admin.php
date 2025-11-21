@@ -770,7 +770,7 @@
     <script src="<?= media(); ?>/minimal/libs/node-waves/waves.min.js"></script>
     <script src="<?= media(); ?>/minimal/libs/feather-icons/feather.min.js"></script>
     <script src="<?= media(); ?>/minimal/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="<?= media(); ?>/minimal/js/plugins.js"></script>
+    <!-- <script src="<?= media(); ?>/minimal/js/plugins.js"></script> -->
 
     <!-- apexcharts -->
     <script src="<?= media(); ?>/minimal/libs/apexcharts/apexcharts.min.js"></script>
@@ -822,12 +822,14 @@
 
     <script>
 
-const primerTabEl = document.querySelector('#nav-tab a[href="#listplantas"]');
-const primerTab = new bootstrap.Tab(primerTabEl);
+        
 
-// Tab NUEVO
-const firstTabEl = document.querySelector('#nav-tab a[href="#agregarplanta"]');
-const firstTab = new bootstrap.Tab(firstTabEl);
+// const primerTabEl = document.querySelector('#nav-tab a[href="#listplantas"]');
+// const primerTab = new bootstrap.Tab(primerTabEl);
+
+// // Tab NUEVO
+// const firstTabEl = document.querySelector('#nav-tab a[href="#agregarplanta"]');
+// const firstTab = new bootstrap.Tab(firstTabEl);
 
 
     </script>
